@@ -7,4 +7,5 @@ ENV GO111MODULE=on \
 RUN set -ex \
     && apk update \
         && apk add --no-cache --update -q --progress \
-            git gcc musl-dev g++
+            git gcc musl-dev g++ \
+            upx
