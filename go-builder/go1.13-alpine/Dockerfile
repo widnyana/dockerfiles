@@ -7,6 +7,7 @@ ENV GO111MODULE=on \
 RUN set -ex \
     && apk update \
         && apk add --no-cache --update -q --progress \
-            git gcc musl-dev g++ \
+            git openssh-client \
+            gcc musl-dev g++ \
             ca-certificates tzdata \
             upx
