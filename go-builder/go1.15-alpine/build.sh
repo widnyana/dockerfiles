@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
-TAGNAME="widnyana/go-builder:1.13-alpine"
+TAGNAME="widnyana/go-builder:1.15-alpine"
 
 
 DOCKER_BUILDKIT=1 docker build \
-    --pull \
     --no-cache \
     --rm \
     -t "${TAGNAME}" \
