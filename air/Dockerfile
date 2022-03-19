@@ -1,4 +1,4 @@
-FROM alpine:3.13
+FROM widnyana/go-builder:1.17-alpine
 
 WORKDIR /app
 
