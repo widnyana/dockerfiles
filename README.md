@@ -1,6 +1,6 @@
 # Dockerfiles
 
-![release workflow](https://github.com/widnyana/dockerfiles/actions/workflows/release.yaml/badge.svg)
+![go release workflow](https://github.com/widnyana/dockerfiles/actions/workflows/release.yaml/badge.svg) ![node release workflow](https://github.com/widnyana/dockerfiles/actions/workflows/oci-nodejs.yaml/badge.svg)
 
 
 Container image collections
@@ -10,6 +10,7 @@ Container image collections
 ## Available tags
 
 - `widnyana/go-builder`: for your golang multistage build process, see: [docker hub](https://hub.docker.com/r/widnyana/go-builder)
+- `widnyana/pm2`: for serving nodejs app using [PM2](https://pm2.keymetrics.io/) [docker hub](https://hub.docker.com/r/widnyana/pm2)
 
 *please refers to `Dockerfile` on each directory for detailed package installed on the container.
 
