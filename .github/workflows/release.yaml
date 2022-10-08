@@ -1,0 +1,103 @@
+name: Release Container Image
+run-name: Release new container image to docker hub 🚀
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
+
+      -
+        name: Release go-builder:1.19-alpine3.16
+        uses: docker/build-push-action@v3
+        with:
+          context: ./go-builder/go1.19-alpine3.16
+          push: true
+          tags: widnyana/go-builder:1.19-alpine3.16
+
+      - 
+        name: Release go-builder:1.18-alpine3.14
+        uses: docker/build-push-action@v3
+        with:
+          context: ./go-builder/go1.18-alpine3.14
+          push: true
+          tags: widnyana/go-builder:1.18-alpine3.14
+
+      - 
+        name: Release go-builder:1.17-alpine
+        uses: docker/build-push-action@v3
+        with:
+          context: ./go-builder/go1.17-alpine
+          push: true
+          tags: widnyana/go-builder:1.17-alpine
+
+      - 
+        name: Release go-builder:1.17-alpine3.14
+        uses: docker/build-push-action@v3
+        with:
+          context: ./go-builder/go1.17-alpine3.14
+          push: true
+          tags: widnyana/go-builder:1.17-alpine3.14
+
+      - 
+        name: Release go-builder:1.17-buster
+        uses: docker/build-push-action@v3
+        with:
+          context: ./go-builder/go1.17-buster
+          push: true
+          tags: widnyana/go-builder:1.17-buster
+
+      - 
+        name: Release go-builder:1.16-alpine
+        uses: docker/build-push-action@v3
+        with:
+          context: ./go-builder/go1.16-alpine
+          push: true
+          tags: widnyana/go-builder:1.16-alpine
+
+      - 
+        name: Release go-builder:1.16-buster
+        uses: docker/build-push-action@v3
+        with:
+          context: ./go-builder/go1.16-buster
+          push: true
+          tags: widnyana/go-builder:1.16-buster
+
+      - 
+        name: Release go-builder:go1.15-alpine
+        uses: docker/build-push-action@v3
+        with:
+          context: ./go-builder/go1.15-alpine
+          push: true
+          tags: widnyana/go-builder:1.15-alpine
+
+      - 
+        name: Release go-builder:1.15-buster
+        uses: docker/build-push-action@v3
+        with:
+          context: ./go-builder/go1.15-buster
+          push: true
+          tags: widnyana/go-builder:1.15-buster
