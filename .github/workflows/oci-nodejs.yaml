@@ -1,4 +1,4 @@
-name: Release Container Image
+name: Release Nodejs Container Image
 run-name: Release new nodejs related container image to docker hub 🚀
 on:
   push:
