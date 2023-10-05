@@ -8,7 +8,7 @@ BUILD_TARGET=(
 )
 
 
-echo "::group::docker build alpine"
+
 
 for t in ${BUILD_TARGET[@]}; do
     RNDM=$(cat /dev/urandom | tr -dc '[:alpha:]' | fold -w ${1:-20} | head -n 1)
@@ -29,4 +29,3 @@ for t in ${BUILD_TARGET[@]}; do
     /usr/bin/docker push "${TAGNAME}" && /usr/bin/docker rmi --force "${TAGNAME}" || true
 done
 
-echo "::endgroup::"
