@@ -2,7 +2,7 @@ ARG BASE
 FROM golang:${BASE}
 
 ENV GO111MODULE=on \
-    CGO_ENABLED=0 \
+    CGO_ENABLED=1 \
     GOOS=linux
 
 RUN set -ex \

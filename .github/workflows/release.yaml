@@ -11,6 +11,7 @@ jobs:
     defaults:
       run:
         working-directory: ./go-builder/debian
+        shell: bash
     steps:
 
       -
@@ -35,4 +36,4 @@ jobs:
 
       -
         name: Release go-builder debian
-        run: ./build.sh
+        run: ./build.sh 

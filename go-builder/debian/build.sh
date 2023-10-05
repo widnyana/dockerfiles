@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-
+set -euo pipefail
+set -x
 
 BUILD_TARGET=(
     "1.19-bookworm"
@@ -13,11 +14,13 @@ for t in ${BUILD_TARGET[@]}; do
 
     TAGNAME="widnyana/go-builder:$t"
     echo -e "----building ${TAGNAME}\n"
+    mkdir -p "/tmp/docker-build-${RNDM}"
     /usr/bin/docker buildx build \
         --iidfile /tmp/docker-build-${RNDM}/iidfile \
         --metadata-file /tmp/docker-build-${RNDM}/metadata-file \
         --provenance false \
         --push \
+        --progress=plain \
         --build-arg BASE=${t} \
         --tag ${TAGNAME} \
         .
