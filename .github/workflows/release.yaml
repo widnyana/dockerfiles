@@ -6,8 +6,11 @@ on:
       - master
 
 jobs:
-  docker:
+  docker-debian:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./go-builder/debian
     steps:
 
       -
@@ -31,73 +34,5 @@ jobs:
           fetch-depth: 1
 
       -
-        name: Release go-builder:1.19-alpine3.16
-        uses: docker/build-push-action@v3
-        with:
-          context: ./go-builder/go1.19-alpine3.16
-          push: true
-          tags: widnyana/go-builder:1.19-alpine3.16
-
-      - 
-        name: Release go-builder:1.18-alpine3.14
-        uses: docker/build-push-action@v3
-        with:
-          context: ./go-builder/go1.18-alpine3.14
-          push: true
-          tags: widnyana/go-builder:1.18-alpine3.14
-
-      - 
-        name: Release go-builder:1.17-alpine
-        uses: docker/build-push-action@v3
-        with:
-          context: ./go-builder/go1.17-alpine
-          push: true
-          tags: widnyana/go-builder:1.17-alpine
-
-      - 
-        name: Release go-builder:1.17-alpine3.14
-        uses: docker/build-push-action@v3
-        with:
-          context: ./go-builder/go1.17-alpine3.14
-          push: true
-          tags: widnyana/go-builder:1.17-alpine3.14
-
-      - 
-        name: Release go-builder:1.17-buster
-        uses: docker/build-push-action@v3
-        with:
-          context: ./go-builder/go1.17-buster
-          push: true
-          tags: widnyana/go-builder:1.17-buster
-
-      - 
-        name: Release go-builder:1.16-alpine
-        uses: docker/build-push-action@v3
-        with:
-          context: ./go-builder/go1.16-alpine
-          push: true
-          tags: widnyana/go-builder:1.16-alpine
-
-      - 
-        name: Release go-builder:1.16-buster
-        uses: docker/build-push-action@v3
-        with:
-          context: ./go-builder/go1.16-buster
-          push: true
-          tags: widnyana/go-builder:1.16-buster
-
-      - 
-        name: Release go-builder:go1.15-alpine
-        uses: docker/build-push-action@v3
-        with:
-          context: ./go-builder/go1.15-alpine
-          push: true
-          tags: widnyana/go-builder:1.15-alpine
-
-      - 
-        name: Release go-builder:1.15-buster
-        uses: docker/build-push-action@v3
-        with:
-          context: ./go-builder/go1.15-buster
-          push: true
-          tags: widnyana/go-builder:1.15-buster
+        name: Release go-builder debian
+        run: ./build.sh
